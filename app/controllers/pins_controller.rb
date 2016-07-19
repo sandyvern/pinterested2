@@ -32,17 +32,6 @@ class PinsController < ApplicationController
     else
       render action: 'new'
     end
-=begin
-    respond_to do |format|
-      if @pin.save
-        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
-        format.json { render :show, status: :created, location: @pin }
-      else
-        format.html { render :new }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
-      end
-    end
-=end
   end
 
   # PATCH/PUT /pins/1
@@ -53,17 +42,6 @@ class PinsController < ApplicationController
     else
       render action: 'edit'
     end
-=begin
-    respond_to do |format|
-      if @pin.update(pin_params)
-        format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pin }
-      else
-        format.html { render :edit }
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
-      end
-    end
-=end
   end
 
   # DELETE /pins/1
@@ -87,13 +65,13 @@ class PinsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
-      params.require(:pin).permit(:description)
+      params.require(:pin).permit(:description, :image)
     end
     
     # defines correct_user
     def correct_user
       @pin = current_user.pins.find_by(id: params[:id])
       redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
-  end
+    end
     
 end

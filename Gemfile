@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :developement
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 4.2'
+gem 'paperclip', '~> 4.2.0'
 
 group :development, :test do
    gem 'sqlite3',     '1.3.9'
